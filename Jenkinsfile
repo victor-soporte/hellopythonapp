@@ -1,10 +1,10 @@
 node {
   stage('Construir y Desplegar') {
     openshiftBuild bldCfg: 'hellopythonapp',
-      namespace: 'development02',
+      namespace: 'develpment02',
       showBuildLogs: 'true'
     openshiftVerifyDeployment depCfg: 'hellopythonapp',
-      namespace: 'development02'
+      namespace: 'develpment02'
   }
   stage('Aprobar (Pruebas)') {
     input message: 'Aprobado para Pruebas?',
@@ -12,9 +12,9 @@ node {
   }
   stage('Desplegar en Pruebas') {
     openshiftTag srcStream: 'hellopythonapp',
-      namespace: 'development02',
+      namespace: 'develpment02',
       srcTag: 'latest',
-      destinationNamespace: 'testing00',
+      destinationNamespace: 'testing02',
       destStream: 'hellopythonapp',
       destTag: 'test'
     openshiftVerifyDeployment depCfg: 'hellopythonapp',
@@ -26,7 +26,7 @@ node {
   }
   stage('Desplegar en Produccion') {
     openshiftTag srcStream: 'hellopythonapp',
-      namespace: 'development02',
+      namespace: 'develpment02',
       srcTag: 'latest',
       destinationNamespace: 'production02',
       destStream: 'hellopythonapp',
