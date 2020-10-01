@@ -1,9 +1,29 @@
+import tkinter as tk
+from tkinter import ttk
+
+root = tk.Tk()
+root.config(width=350, height=250)
+root.title("Aplicación de escritorio en Tcl/Tk")
+frame = tk.Frame(root)
+frame.place(x=0, y=0, width=350, height=250)
+button = tk.Button(frame, text="Hola mundo!")
+button.place(x=50, y=50)
+textbox = tk.Entry(frame)
+textbox.insert(0, "Ingrese su nombre...")
+textbox.place(x=50, y=100)
+checkbox = ttk.Checkbutton(frame, text="Opción 1")
+checkbox.place(x=50, y=150)
+root.mainloop()
+
+
 from flask import Flask
 application = Flask(__name__)
 
 @application.route('/')
 def hello_world():
     return "Hola, Tepic! iwuser02 > Victor \r\n", 200, { 'Content-Type': 'text/plain' }
+
+
 
 if __name__ == '__main__':
     application.run(debug = True)
